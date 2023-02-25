@@ -1,0 +1,18 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+public class Main {
+    /* Convert string as format "yyyy-MM-dd" to java.sql.Date.
+     * @param date String date.
+     * @return java.sql.Date object.
+     */
+    public static java.sql.Date asSqlDate(String date) {
+        try {
+            java.util.Date dt = new SimpleDateFormat("yyyy-MM-dd")
+                    .parse(date);
+            return new java.sql.Date(dt.getTime());
+        } catch (ParseException e) {
+            throw new IllegalArgumentException(e);
+        }
+    }
+}
